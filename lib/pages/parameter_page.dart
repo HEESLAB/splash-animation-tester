@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../utils/custom_page_route.dart';
 
 import './splash_page.dart';
 
@@ -66,6 +67,19 @@ class _ParemeterState extends State<ParameterPage> {
     return false;
   }
 
+  void _launchOnPressed() {
+    Navigator.of(context).push(
+      // MaterialPageRoute(
+      NoTransitionPageRoute(
+        builder: (context) => SplashPage(
+          curve: _curve,
+          animationDuration: _animationDuration.floor(),
+          afterglowDuration: _afterglowDuration.floor(),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,17 +137,7 @@ class _ParemeterState extends State<ParameterPage> {
                   SizedBox(height: 60),
                   Center(
                     child: RaisedButton(
-                      onPressed: _isValid
-                          ? () => Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => SplashPage(
-                                    curve: _curve,
-                                    animationDuration: _animationDuration.floor(),
-                                    afterglowDuration: _afterglowDuration.floor(),
-                                  ),
-                                ),
-                              )
-                          : null,
+                      onPressed: _isValid ? _launchOnPressed : null,
                       child: Text('LAUNCH', style: TextStyle(color: Colors.white)),
                     ),
                   ),

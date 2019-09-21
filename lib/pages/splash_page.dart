@@ -43,7 +43,7 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFA6A6A6),
+      backgroundColor: Color(0xFF303030),
       body: WillPopScope(
         onWillPop: () => Future.value(false),
         child: Center(
